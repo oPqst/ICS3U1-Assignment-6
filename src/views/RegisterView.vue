@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-import { useStorePassword } from '../store'; 
-import { useRouter } from 'vue-router';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
+import { ref } from 'vue';
+import { useStorePassword } from '../store';
+import { useRouter } from 'vue-router';
 
 const storePassword = useStorePassword();
 const router = useRouter();
@@ -15,13 +15,9 @@ const password = ref('');
 const rePassword = ref('');
 
 const validateForm = () => {
-  if (!firstName.value || !lastName.value || !email.value || !password.value || !rePassword.value) {
-    return 'All fields are required.';
-  }
   if (password.value !== rePassword.value) {
     return 'Passwords do not match.';
   }
-  return null;
 };
 
 const handleSubmit = (event) => {
@@ -29,7 +25,7 @@ const handleSubmit = (event) => {
 
   const errorMessage = validateForm();
   if (errorMessage) {
-    alert(errorMessage);
+    alert(errorMessage); 
     return;
   }
 
@@ -40,14 +36,6 @@ const handleSubmit = (event) => {
     password: password.value,
   });
 
-  alert('Registration successful!');
-  
-  firstName.value = '';
-  lastName.value = '';
-  email.value = '';
-  password.value = '';
-  rePassword.value = '';
-  
   router.push('/movies');
 };
 </script>

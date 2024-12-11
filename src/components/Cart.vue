@@ -2,7 +2,6 @@
 import { useStore } from '../store';
 
 const store = useStore();
-
 </script>
 
 <template>
@@ -16,7 +15,6 @@ const store = useStore();
             <h2 class="item-title">{{ value.title }}</h2>
             <p class="item-description">{{ value.overview }}</p>
             <p class="item-release-date">Release Date: 📆 {{ value.release_date }}</p>
-            <p class="item-origin-country">Origin Country: 🗺️ {{ value.origin_country }}</p>
             <p class="item-vote-average">Vote Average: ⭐ {{ value.vote_average }}</p>
             <button @click="store.cart.delete(key)" class="remove-button">Remove</button>
           </div>
@@ -110,16 +108,16 @@ const store = useStore();
 
 .remove-button {
   background-color: #ffcc00;
-  padding: 8px 25px; 
+  padding: 8px 25px;
   border-radius: 5px;
   color: #000;
   border: none;
   font-family: 'Bebas Neue', sans-serif;
   cursor: pointer;
-  display: inline-block; 
-  width: fit-content; 
+  display: inline-block;
+  width: fit-content;
   font-weight: bold;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -128,13 +126,10 @@ const store = useStore();
   transform: translateY(-2px);
 }
 
-
 .empty-cart-message {
   font-size: 1.5rem;
   color: #e0e0e0;
   text-align: center;
   margin-top: 20px;
 }
-
-
 </style>

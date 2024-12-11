@@ -9,14 +9,15 @@ export const useStore = defineStore('store', () => {
 
 export const useStorePassword = defineStore('main', {
   state: () => ({
-    user: null, 
+    user: null,
   }),
   actions: {
     setUser(userData) {
-      this.user = userData; 
+      this.user = userData;
     },
     clearUser() {
-      this.user = null; 
+      this.user = null;
+      useStore().cart.clear();
     },
   },
 });

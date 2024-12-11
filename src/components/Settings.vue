@@ -1,10 +1,8 @@
 <script setup>
 import { useStorePassword } from '../store';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 
 const storePassword = useStorePassword();
-const router = useRouter();
 
 const firstName = ref(storePassword.user ? storePassword.user.firstName : '');
 const lastName = ref(storePassword.user ? storePassword.user.lastName : '');
@@ -22,21 +20,12 @@ const saveChanges = () => {
       <h2>Settings</h2>
       <div class="user-info">
         <label for="firstName">Change First Name:</label>
-        <input v-model="firstName" id="firstName" type="text" placeholder="First Name" class="input-field"/>
-
+        <input v-model="firstName" id="firstName" type="text" placeholder="First Name" class="input-field" />
         <label for="lastName">Change Last Name:</label>
-        <input v-model="lastName" id="lastName" type="text" placeholder="Last Name" class="input-field"/>
-
+        <input v-model="lastName" id="lastName" type="text" placeholder="Last Name" class="input-field" />
         <label for="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          :value="storePassword.user?.email"
-          disabled
-          placeholder="Email"
-          class="input-field"
-        />
-
+        <input id="email" type="email" :value="storePassword.user?.email" disabled placeholder="Email"
+          class="input-field" />
         <button @click="saveChanges" class="button login">Save Changes</button>
       </div>
     </div>

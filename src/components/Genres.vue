@@ -1,20 +1,34 @@
 <script setup>
-import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { useStore } from '../store';
+import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const props = defineProps(["genres"]);
 const router = useRouter();
+const store = useStore();
 const selectedGenre = ref(12);
 const response = ref(null);
 
+const addToCart = (movie) => {
+  if (!store.cart.has(movie.id)) {
+    store.cart.set(movie.id, {
+      title: movie.title,
+      url: movie.poster_path,
+      overview: movie.overview,
+      release_date: movie.release_date,
+      vote_average: movie.vote_average,
+    });
+  }
+};
+
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenre.value}`);
-};
+}
 
 function getMovieDetails(id) {
   router.push(`/movies/${id}`);
-};
+}
 
 onMounted(async () => {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenre.value}`);
@@ -41,9 +55,9 @@ onMounted(async () => {
       <div class="movie-description">
         <h3>{{ movie.title }}</h3>
         <p>Release Date: {{ movie.release_date }}</p>
-        <a :href="`https://www.youtube.com/results?search_query=${movie.title}+trailer`" target="_blank"
-          class="trailer">
-          Watch the Trailer</a>
+        <button @click.stop="addToCart(movie)" class="buy-button">
+          {{ store.cart.has(movie.id) ? 'Added!' : 'Buy!' }}
+        </button>
       </div>
     </div>
   </div>
@@ -129,19 +143,22 @@ onMounted(async () => {
   font-family: 'Bebas Neue';
 }
 
-.trailer {
-  display: inline-block;
-  background: #ffcc00;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
+.buy-button {
   margin-top: 10px;
-  transition: 0.3s;
+  background-color: #ffcc00;
+  padding: 8px 20px;
+  border-radius: 5px;
+  color: black;
+  border: none;
+  font-family: 'Bebas Neue', sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.trailer:hover {
-  background: #ffc107;
-  color: white;
+.buy-button:hover {
+  background-color: #ffc107;
+  transform: translateY(-2px);
 }
 </style>

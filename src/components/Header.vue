@@ -18,23 +18,23 @@ const logout = () => {
       <img src="/src/assets/logo.png" class="logo" />
     </RouterLink>
     <ul>
+      <div v-if="storePassword.user">
+        <li class="welcome-message">
+          Welcome, {{ storePassword.user.firstName }}!
+        </li>
+      </div>
       <li>
         <RouterLink to="/movies">New Movies</RouterLink>
       </li>
-      
-      <li v-if="!storePassword.user"><a href="">TV Shows</a></li>
-      <li v-if="!storePassword.user"><a href="">Actors</a></li>
+      <li><a href="">TV Shows</a></li>
+      <li><a href="">Actors</a></li>
       <li v-if="!storePassword.user">
         <RouterLink to="/register" class="su-button">SIGN UP</RouterLink>
       </li>
       <li v-if="!storePassword.user">
         <RouterLink to="/login" class="su-button">SIGN IN</RouterLink>
       </li>
-
       <div v-if="storePassword.user" class="user-options">
-        <li class="welcome-message">
-          Welcome, {{ storePassword.user.firstName }}!
-        </li>
         <li>
           <RouterLink to="/cart" class="su-button">Cart</RouterLink>
         </li>
@@ -117,9 +117,8 @@ const logout = () => {
 
 .welcome-message {
   font-size: 25px;
-  color: white;
+  color: #E6B800;
   margin-right: 20px;
   font-family: 'Orbitron', sans-serif;
-  text-decoration: underline;
 }
 </style>

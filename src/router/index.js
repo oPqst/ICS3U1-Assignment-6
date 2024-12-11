@@ -16,7 +16,6 @@ const routes = [
     { path: '/movies', component: MoviesView },
     { path: '/movies/:id', component: DetailView },
     { path: '/settings', component: SettingsView },
-
 ]
 
 const router = createRouter({
