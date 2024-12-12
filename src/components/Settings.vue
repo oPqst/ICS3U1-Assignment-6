@@ -1,15 +1,15 @@
 <script setup>
-import { useStorePassword } from '../store';
+import { useStore } from '../store';
 import { ref } from 'vue';
 
-const storePassword = useStorePassword();
+const store = useStore();
 
-const firstName = ref(storePassword.user ? storePassword.user.firstName : '');
-const lastName = ref(storePassword.user ? storePassword.user.lastName : '');
+const firstName = ref(store.firstName ? store.firstName : '');
+const lastName = ref(store.lastName ? store.lastName : '');
 
 const saveChanges = () => {
-  storePassword.user.firstName = firstName.value;
-  storePassword.user.lastName = lastName.value;
+  store.firstName = firstName.value;
+  store.lastName = lastName.value;
   alert('Changes saved!');
 };
 </script>
@@ -24,7 +24,7 @@ const saveChanges = () => {
         <label for="lastName">Change Last Name:</label>
         <input v-model="lastName" id="lastName" type="text" placeholder="Last Name" class="input-field" />
         <label for="email">Email:</label>
-        <input id="email" type="email" :value="storePassword.user?.email" disabled placeholder="Email"
+        <input id="email" type="email" :value="store?.email" disabled placeholder="Email"
           class="input-field" />
         <button @click="saveChanges" class="button login">Save Changes</button>
       </div>

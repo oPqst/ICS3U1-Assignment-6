@@ -2,10 +2,10 @@
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 import { ref } from 'vue';
-import { useStorePassword } from '../store';
+import { useStore } from '../store';
 import { useRouter } from 'vue-router';
 
-const storePassword = useStorePassword();
+const store = useStore();
 const router = useRouter();
 
 const firstName = ref('');
@@ -29,15 +29,17 @@ const handleSubmit = (event) => {
     return;
   }
 
-  storePassword.setUser({
-    firstName: firstName.value,
-    lastName: lastName.value,
-    email: email.value,
-    password: password.value,
-  });
+  else{
 
-  router.push('/movies');
-};
+    store.firstName = firstName.value,
+    store.lastName = lastName.value,
+    store.email = email.value,
+    store.password = password.value,
+    router.push('/movies');
+  }
+
+  };
+
 </script>
 
 <template>
