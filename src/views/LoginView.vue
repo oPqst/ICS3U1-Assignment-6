@@ -1,9 +1,9 @@
 <script setup>
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
+import { useRouter } from 'vue-router';
 import { useStore } from '../store';
+import { ref } from 'vue';
 
 const store = useStore();
 const router = useRouter();
@@ -78,7 +78,7 @@ const handleLogin = () => {
   background: transparent;
   color: white;
   font-size: 16px;
-  font-family: 'Bebas Neue';
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .input-field::placeholder {

@@ -7,39 +7,26 @@ import { useRouter } from 'vue-router';
 
 const store = useStore();
 const router = useRouter();
-
 const firstName = ref('');
 const lastName = ref('');
 const email = ref('');
 const password = ref('');
 const rePassword = ref('');
 
-const validateForm = () => {
-  if (password.value !== rePassword.value) {
-    return 'Passwords do not match.';
-  }
-};
-
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  const errorMessage = validateForm();
-  if (errorMessage) {
-    alert(errorMessage); 
+  if (password.value !== rePassword.value) {
+    alert('Passwords do not match.');
     return;
-  }
-
-  else{
-
-    store.firstName = firstName.value,
-    store.lastName = lastName.value,
-    store.email = email.value,
-    store.password = password.value,
+  } else {
+    store.firstName = firstName.value;
+    store.lastName = lastName.value;
+    store.email = email.value;
+    store.password = password.value;
     router.push('/movies');
   }
-
-  };
-
+};
 </script>
 
 <template>
@@ -103,7 +90,7 @@ const handleSubmit = (event) => {
   background: transparent;
   color: white;
   font-size: 16px;
-  font-family: 'Bebas Neue';
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .input-field::placeholder {

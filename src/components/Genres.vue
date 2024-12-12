@@ -1,7 +1,7 @@
 <script setup>
+import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useStore } from '../store';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const props = defineProps(["genres"]);
@@ -11,15 +11,13 @@ const selectedGenre = ref(12);
 const response = ref(null);
 
 const addToCart = (movie) => {
-  if (!store.cart.has(movie.id)) {
-    store.cart.set(movie.id, {
-      title: movie.title,
-      url: movie.poster_path,
-      overview: movie.overview,
-      release_date: movie.release_date,
-      vote_average: movie.vote_average,
-    });
-  }
+  store.cart.set(movie.id, {
+    title: movie.title,
+    url: movie.poster_path,
+    overview: movie.overview,
+    release_date: movie.release_date,
+    vote_average: movie.vote_average,
+  });
 };
 
 async function getMovieByGenre() {

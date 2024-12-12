@@ -18,42 +18,24 @@ const logout = () => {
       <img src="/src/assets/logo.png" class="logo" />
     </RouterLink>
     <ul>
-
-
       <div v-if="store.email">
         <li class="welcome-message">
           Welcome, {{ store.firstName }}!
         </li>
       </div>
-
-
-
-
       <li>
         <RouterLink to="/movies">New Movies</RouterLink>
       </li>
-
-
-
       <li><a href="">TV Shows</a></li>
       <li><a href="">Actors</a></li>
-
-
 
       <li v-if="!store.email">
         <RouterLink to="/register" class="su-button">SIGN UP</RouterLink>
       </li>
-
-
-
       <li v-if="!store.email">
         <RouterLink to="/login" class="su-button">SIGN IN</RouterLink>
       </li>
 
-
-
-
-      
       <div v-else="" class="user-options">
         <li>
           <RouterLink to="/cart" class="su-button">Cart</RouterLink>
@@ -65,9 +47,6 @@ const logout = () => {
           <button @click="logout" class="su-button">Logout</button>
         </li>
       </div>
-
-
-      
     </ul>
   </div>
 </template>
