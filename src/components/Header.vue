@@ -28,13 +28,16 @@ const logout = () => {
       </li>
       <li><a href="">TV Shows</a></li>
       <li><a href="">Actors</a></li>
+
+
       <li v-if="!storePassword.user">
         <RouterLink to="/register" class="su-button">SIGN UP</RouterLink>
       </li>
       <li v-if="!storePassword.user">
         <RouterLink to="/login" class="su-button">SIGN IN</RouterLink>
       </li>
-      <div v-if="storePassword.user" class="user-options">
+      
+      <div v-else="" class="user-options">
         <li>
           <RouterLink to="/cart" class="su-button">Cart</RouterLink>
         </li>
