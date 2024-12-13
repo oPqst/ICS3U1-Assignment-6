@@ -10,7 +10,7 @@ const store = useStore();
   <Header />
   <div class="cart-container">
     <div class="cart">
-      <h1 class="cart-title">Shopping Cart</h1>
+      <h1 class="cart-title">🛒 Shopping Cart 🛒</h1>
       <div v-if="store.cart.size > 0" class="cart-items">
         <div v-for="([key, value]) in store.cart" :key="key" class="item">
           <img :src="`https://image.tmdb.org/t/p/w500${value.url}`" class="item-poster" />
@@ -24,7 +24,7 @@ const store = useStore();
         </div>
       </div>
       <div v-else class="empty-cart-message">
-        Your cart is empty.
+        ‼️ Your cart is empty. ‼️
       </div>
     </div>
   </div>
@@ -94,7 +94,7 @@ const store = useStore();
 
 .item-title {
   font-size: 1.8rem;
-  color: #e0e0e0;
+  color: #ffcc00;
 }
 
 .item-description {

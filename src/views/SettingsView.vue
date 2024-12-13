@@ -5,7 +5,6 @@ import { useStore } from '../store';
 import { ref } from 'vue';
 
 const store = useStore();
-
 const firstName = ref(store.firstName ? store.firstName : '');
 const lastName = ref(store.lastName ? store.lastName : '');
 
@@ -20,7 +19,7 @@ const saveChanges = () => {
   <Header />
   <div class="hero">
     <div class="form-container">
-      <h2>Settings</h2>
+      <h2>⚙️ Settings ⚙️</h2>
       <div class="user-info">
         <label for="firstName">Change First Name:</label>
         <input v-model="firstName" id="firstName" type="text" placeholder="First Name" class="input-field" />

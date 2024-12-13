@@ -16,9 +16,18 @@ const rePassword = ref('');
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  if (password.value !== rePassword.value) {
+  if (!firstName.value) {
+    alert('First Name is required.');
+  } else if (!lastName.value) {
+    alert('Last Name is required.');
+  } else if (!email.value) {
+    alert('Email is required.');
+  } else if (!password.value) {
+    alert('Password is required.');
+  } else if (!rePassword.value) {
+    alert('Re-entering the password is required.');
+  } else if (password.value !== rePassword.value) {
     alert('Passwords do not match.');
-    return;
   } else {
     store.firstName = firstName.value;
     store.lastName = lastName.value;
@@ -35,11 +44,11 @@ const handleSubmit = (event) => {
     <div class="form-container">
       <h2>Create an Account</h2>
       <form @submit="handleSubmit">
-        <input v-model="firstName" type="text" placeholder="First Name" class="input-field" required>
-        <input v-model="lastName" type="text" placeholder="Last Name" class="input-field" required>
-        <input v-model="email" type="email" placeholder="Email" class="input-field" required>
-        <input v-model="password" type="password" placeholder="Password" class="input-field" required>
-        <input v-model="rePassword" type="password" placeholder="Re-enter Password" class="input-field" required>
+        <input v-model="firstName" type="text" placeholder="First Name" class="input-field">
+        <input v-model="lastName" type="text" placeholder="Last Name" class="input-field">
+        <input v-model="email" type="email" placeholder="Email" class="input-field">
+        <input v-model="password" type="password" placeholder="Password" class="input-field">
+        <input v-model="rePassword" type="password" placeholder="Re-enter Password" class="input-field">
         <button type="submit" class="button register">Register</button>
       </form>
     </div>
