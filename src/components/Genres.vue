@@ -43,9 +43,13 @@ onMounted(async () => {
       <div class="movie-description">
         <h3>{{ movie.title }}</h3>
         <p>Release Date: {{ movie.release_date }}</p>
-        <button
-          @click.stop="store.cart.set(movie.id, { title: movie.original_title, url: movie.poster_path, overview: movie.overview, release_date: movie.release_date, vote_average: movie.vote_average });"
-          class="buy-button">
+        <button @click.stop="store.cart.set(movie.id, {
+          title: movie.original_title,
+          url: movie.poster_path,
+          overview: movie.overview,
+          release_date: movie.release_date,
+          vote_average: movie.vote_average
+        })" class="buy-button">
           {{ store.cart.has(movie.id) ? 'Added!' : 'Buy!' }}
         </button>
       </div>
