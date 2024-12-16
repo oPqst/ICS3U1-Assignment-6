@@ -27,7 +27,7 @@ const saveChanges = () => {
         <input v-model="lastName" id="lastName" type="text" placeholder="Last Name" class="input-field" />
         <label for="email">Email:</label>
         <input id="email" type="email" v-model="store.email" readonly placeholder="Email" class="input-field" />
-        <button @click="saveChanges" class="button login">Save Changes</button>
+        <button @click="saveChanges()" class="button login">Save Changes</button>
       </div>
     </div>
   </div>
