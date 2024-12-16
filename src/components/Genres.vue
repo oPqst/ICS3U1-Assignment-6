@@ -10,16 +10,6 @@ const store = useStore();
 const selectedGenre = ref(12);
 const response = ref(null);
 
-const addToCart = (movie) => {
-  store.cart.set(movie.id, {
-    title: movie.title,
-    url: movie.poster_path,
-    overview: movie.overview,
-    release_date: movie.release_date,
-    vote_average: movie.vote_average,
-  });
-};
-
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenre.value}`);
 }
@@ -53,7 +43,9 @@ onMounted(async () => {
       <div class="movie-description">
         <h3>{{ movie.title }}</h3>
         <p>Release Date: {{ movie.release_date }}</p>
-        <button @click.stop="addToCart(movie)" class="buy-button">
+        <button
+          @click.stop="store.cart.set(movie.id, { title: movie.title, url: movie.poster_path, overview: movie.overview, release_date: movie.release_date, vote_average: movie.vote_average });"
+          class="buy-button">
           {{ store.cart.has(movie.id) ? 'Added!' : 'Buy!' }}
         </button>
       </div>
